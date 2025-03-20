@@ -1,0 +1,16 @@
+class Solution {
+  public:
+    int t[100001] ;
+    int solve(int i, int n, vector<int>& arr) {
+        if(i >= n) return 0 ;
+        if(t[i] != -1) return t[i] ;
+        int a = solve(i+1, n, arr) ;
+        int b = arr[i] + solve(i+2, n, arr) ;
+        return t[i] = max(a, b) ;
+    }
+    int findMaxSum(vector<int>& arr) {
+        int n = arr.size() ;
+        memset(t, -1, sizeof(t)) ;
+        return solve(0, n, arr) ;
+    }
+};
