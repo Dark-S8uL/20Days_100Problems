@@ -1,0 +1,59 @@
+# Approach 01 :
+
+class Solution {
+public:
+    vector<string> v ;
+    void makePar(string s, int o, int c, int n) {
+        if(s.length() == 2 * n || (o == n && c == n)) {
+            v.push_back(s) ;
+            return ;
+        }
+        if(o < n) makePar(s + '(', o+1, c, n) ;
+        if(c < n) makePar(s + ')', o, c+1, n) ;
+    }
+    vector<string> generateParenthesis(int n) {
+        int o = n, c = n ;
+        string s = "" ;
+        makePar("", 0, 0, n) ;
+        vector<string> ans ;
+        for(string s : v) {
+            stack<char> st ;
+            for(char ch : s) {
+                if(!st.empty() && st.top() == '(' && ch == ')') st.pop() ;
+                else st.push(ch) ;
+            }
+            if(st.empty()) ans.push_back(s) ;
+        }
+        return ans ;
+    }
+};
+
+---------------------------------------------------------------------------------
+# Approach 02 :
+
+class Solution {
+public:
+    vector<string> v ;
+    void makePar(string s, int o, int c, int n) {
+        if(s.length() == 2 * n) {
+            v.push_back(s) ;
+            return ;
+        }
+        if(o < n) {
+            s.push_back('(') ;
+            makePar(s, o+1, c, n) ;
+            s.pop_back() ;
+        }
+        if(c < o) {
+            s.push_back(')') ;
+            makePar(s, o, c+1, n) ;
+            s.pop_back() ;
+        }
+    }
+    vector<string> generateParenthesis(int n) {
+        int o = n, c = n ;
+        string s = "" ;
+        makePar("", 0, 0, n) ;
+        return v ;
+    }
+};
