@@ -1,0 +1,13 @@
+int countWays(string &s) {
+        int n = s.length() ;
+        if(n == 0|| s[0] == '0') return 0 ;
+        int prev = 1, prevPrev = 1 ;
+        for(int i = 2; i <= n; ++i) {
+            int curr = 0 ;
+            if(s[i-1] != '0') curr += prev ;
+            if((s[i-2] == '1') || (s[i-2] == '2' && s[i-1] <= '6')) curr += prevPrev ;
+            prevPrev = prev ;
+            prev = curr ;
+        }
+        return prev ;
+    }
