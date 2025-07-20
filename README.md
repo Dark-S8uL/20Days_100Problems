@@ -1,4 +1,4 @@
-# 💻 Solutions_01 - 20 Days Coding Challenge
+# 💻 20Days_100Problems - 20 Days Coding Challenge
 
 Welcome to my **Daily Coding Practice** repository! 🚀  
 This repo contains all the solutions I practiced and solved during a **20-days intense coding challenge** from **20th March 2025 to 8th April 2025**.
